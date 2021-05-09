@@ -2,6 +2,8 @@
 
 Vehicle Tracking System is a system which will track the live position of vehicle with the help of satellites. Here we tried to reproduce the same, with all the software and the hardware support. In general, tracking of vehicles is a process in which we request the location in form of latitude and longitude (Geographic Coordinates) and send them to the server. Geographic Coordinates can pin point any location on Earth. This system is very efficient for outdoor application purposes, having accuracy of about 5m. These devices are widely used in tracking passenger vehicles, stolen vehicles, school/college buses, etc. They are very commonly used in fleet management and asset tracking applications. Today these systems can not only track the location of the vehicle but can also report the speed and locate the vehicle on the map. They can be used for multiple vehicles simultaneously and can be used from anywhere in world with the help of internet.
 
+### See it's webpage [here](https://mysterious-owl.github.io/vehicle-tracking-system/Code/server/templates/index.html)
+
 ## Includes -
  - Vehicle Device(hardware): 
     - GPS module
