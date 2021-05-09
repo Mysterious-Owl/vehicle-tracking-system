@@ -1,0 +1,56 @@
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>GPS</title>
+    <link rel="stylesheet" href="../static/maa.css">
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="height: 500px"></div>
+    <hr>
+    <h1>Current Coordinates</h1>
+    <h2>Latitude: {{lat}}</h2>
+    <h2>Longitude: {{long}}</h2>
+    <hr>
+  </body>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=geometry"></script>
+  <script src="https://maps.googleapis.com/maps/api/js"></script>
+  <script src="/static/where.js"></script>
+  <script>
+      function initialize() {
+          var mapOptions = {
+            zoom: 16,
+            center: new google.maps.LatLng(last[0],last[1]),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          }
+          var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+          var i = 0;
+          var markers = [];
+        for(var point in data){
+          var n = data[point]['data'].length;
+          markers = [];
+          for(i=1;i<n;i++){
+            var line = new google.maps.Polyline({
+                path: [
+                    new google.maps.LatLng(data[point]['data'][i-1][1], data[point]['data'][i-1][2]),
+                    new google.maps.LatLng(data[point]['data'][i][1], data[point]['data'][i][2])
+                ],
+                strokeColor: data[point]['color'],
+                strokeOpacity: 0.7,
+                geodesic: true,
+                strokeWeight: 3,
+                map: map
+            });
+          }
+
+          var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(data[point]['data'][n-1][1], data[point]['data'][n-1][2]),
+              map: map,
+              title: point
+          });
+          markers.push(marker);
+
+        }
+      }
+  </script>
+</html>
